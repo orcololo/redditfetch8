@@ -1,5 +1,6 @@
 import praw
+from helpers.commonConfig import CommonConfig
 
-reddit = praw.Reddit(client_id='my client id',
-                     client_secret='my client secret',
-                     user_agent='my user agent')
+reddit = praw.Reddit(client_id=CommonConfig.CLIENT_ID,
+                     client_secret=CommonConfig.CLIENT_SECRET,
+                     user_agent=CommonConfig.AGENT_USER)
