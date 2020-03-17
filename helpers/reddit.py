@@ -9,8 +9,10 @@ reddit = praw.Reddit(client_id=CommonConfig.CLIENT_ID,
 def getSub():
     pass
 
+
 def getUser():
     pass
+
 
 def getUserAndType():
     pass
