@@ -1,6 +1,7 @@
 import praw
-from helpers.commonConfig import CommonConfig
-from helpers.downloader import concurrent_download
+from commonConfig import CommonConfig
+from downloader import concurrent_download
+from info import getInfo
 import json
 
 reddit = praw.Reddit(client_id=CommonConfig.CLIENT_ID,
@@ -9,11 +10,12 @@ reddit = praw.Reddit(client_id=CommonConfig.CLIENT_ID,
 
 
 def getSub(targetSub, totalSize=None):
-    links = []
+    count = 0
     for submissions in reddit.subreddit(targetSub).hot(limit=totalSize):
         if not submissions.stickied:
-            links.append(submissions.url)
-    return links
+            count += 1
+            print(getInfo(submissions))
+    print(count)
 
 
 def getUser():
@@ -24,7 +26,7 @@ def getUserAndType():
     pass
 
 
-def getSub2(targetSub, totalSize=None):
+def getSub2(targetSub, totalSize=20):
     actual = 0
     linksdict = {}
     for submissions in reddit.subreddit(targetSub).hot(limit=totalSize):

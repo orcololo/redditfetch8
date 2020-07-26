@@ -9,7 +9,8 @@ api = Api(app)
 
 class HelloWorld(Resource):
     def get(self):
-        return getSub2('gonewild', 20)
+        print(type(getSub2('gonewild', 10)))
+        return {'hello': 'world'}
 
 
 api.add_resource(HelloWorld, '/')
